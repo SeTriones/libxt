@@ -23,7 +23,7 @@ extern "C"
 
 double_linked_list* init_list();
 void destroy_list(double_linked_list* lst);
-int mv_node_to_header(double_linked_list* lst, node* node, int is_new_node);
+void mv_node_to_header(double_linked_list* lst, node* node, int is_new_node);
 int rm_node_from_tail(double_linked_list* lst, int cnt);
 
 #ifdef __cplusplus

@@ -26,12 +26,12 @@ void destroy_list(double_linked_list* lst) {
 	return;
 }
 
-int mv_node_to_header(double_linked_list* lst, node* n, int is_new_node) {
+void mv_node_to_header(double_linked_list* lst, node* n, int is_new_node) {
 	node* next = NULL;
 	node* prev = NULL;
 	if (is_new_node == 0) {
 		if (n == lst->header) {
-			goto relink;
+			return;
 		}
 		prev = n->prev;
 		next = n->next;
@@ -48,12 +48,13 @@ int mv_node_to_header(double_linked_list* lst, node* n, int is_new_node) {
 			lst->tail = n;
 		}
 	}
-relink:
 	n->prev = NULL;
 	n->next = lst->header;
-	lst->header->prev = n;
+	if (lst->header) {
+		lst->header->prev = n;
+	}
 	lst->header = n;
-	return 0;	
+	return;	
 }
 
 int rm_node_from_tail(double_linked_list* lst, int cnt) {
