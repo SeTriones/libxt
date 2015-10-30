@@ -23,8 +23,12 @@ extern "C"
 
 double_linked_list* init_list();
 void destroy_list(double_linked_list* lst);
-void mv_node_to_header(double_linked_list* lst, node* node, int is_new_node);
+void mv_node_to_header(double_linked_list* lst, node* n, int is_new_node);
 int rm_node_from_tail(double_linked_list* lst, int cnt);
+int push_from_header(double_linked_list* lst, node* n);
+int push_from_tail(double_linked_list* lst, node* n);
+node* pop_from_header(double_linked_list* lst);
+node* pop_from_tail(double_linked_list* lst);
 
 #ifdef __cplusplus
 }

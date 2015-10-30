@@ -75,3 +75,48 @@ int rm_node_from_tail(double_linked_list* lst, int cnt) {
 	}
 	return ret; 
 }
+
+int push_from_header(double_linked_list* lst, node* n) {
+	lst->header = n;
+	n->next = lst->header;
+	if (lst->header) {
+		lst->header->prev = n;
+	}
+	return ++lst->node_cnt;
+}
+
+int push_from_tail(double_linked_list* lst, node* n) {
+	if (lst->tail) {
+		lst->tail->next = n;
+		n->prev = lst->tail;
+		lst->tail = n;
+		return ++lst->node_cnt;
+	}
+	else {
+		return push_from_header(lst, n);
+	}
+}
+
+node* pop_from_header(double_linked_list* lst) {
+	if (!lst->header) {
+		return NULL;
+	}
+	node* n = lst->header;
+	lst->header = n->next;
+	if (lst->header) {
+		lst->header->prev = NULL;
+	}
+	return n;
+}
+
+node* pop_from_tail(double_linked_list* lst) {
+	if (!lst->tail) {
+		return NULL;
+	}
+	node* n = lst->tail;
+	lst->tail = n->prev;
+	if (lst->tail) {
+		lst->tail->next = NULL;
+	}
+	return n;
+}
