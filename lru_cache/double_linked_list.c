@@ -77,11 +77,12 @@ int rm_node_from_tail(double_linked_list* lst, int cnt) {
 }
 
 int push_from_header(double_linked_list* lst, node* n) {
-	lst->header = n;
 	n->next = lst->header;
+	n->prev = NULL;
 	if (lst->header) {
 		lst->header->prev = n;
 	}
+	lst->header = n;
 	return ++lst->node_cnt;
 }
 
