@@ -1,10 +1,14 @@
 #ifndef DOUBLE_LINKED_LIST
 #define DOUBLE_LINKED_LIST
+#include <stdlib.h>
+#include <stdio.h>
 
-typedef struct {
+typedef struct __node node;
+
+struct __node {
 	node* prev;
 	node* next;
-} node;
+};
 
 typedef struct {
 	node* header;
